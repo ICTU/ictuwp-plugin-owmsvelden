@@ -39,6 +39,120 @@ class OWMSvelden {
     public $owmsvelden = null;
 
 
+    public $spatial = array(    
+      '1' => array( 
+        'label' =>  'Nederland',
+        'term'  =>  'overheid:Nederland',
+        'uri'   =>  'http://standaarden.overheid.nl/owms/terms/Nederland'
+      ),
+      '2' => array( 
+        'label' =>  'Nederlandse Antillen',
+        'term'  =>  'overheid:Nederlandse_Antillen',
+        'uri'   =>  'http://standaarden.overheid.nl/owms/terms/Nederlandse_Antillen'
+      ),
+      '3' => array( 
+        'label' =>  'Sint Maarten',
+        'term'  =>  'overheid:Sint_Maarten_(Nederlandse_Antillen)',
+        'uri'   =>  'http://standaarden.overheid.nl/owms/terms/Sint_Maarten_(Nederlandse_Antillen)'
+      ),
+      '4' => array( 
+        'label' =>  'Aruba',
+        'term'  =>  'overheid:Aruba',
+        'uri'   =>  'http://standaarden.overheid.nl/owms/terms/Aruba'
+      ),
+      '5' => array( 
+        'label' => 'Curaçao', 
+        'term' => 'overheid:Curacao', 
+        'uri' =>'http://standaarden.overheid.nl/owms/terms/Curacao'
+      )
+    );
+
+    public $ministeries = array(    
+
+      '1' => array( 
+          'label'   => 'Ministerie van Algemene Zaken', 
+          'term'    => 'overheid:Ministerie_van_Algemene_Zaken', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Algemene_Zaken'
+         ),
+      '2' => array( 
+          'label'   => 'Ministerie van Binnenlandse Zaken en Koninkrijksrelaties', 
+          'term'    => 'overheid:Ministerie_van_Binnenlandse_Zaken_en_Koninkrijksrelaties', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Binnenlandse_Zaken_en_Koninkrijksrelaties'
+         ),
+      '3' => array( 
+          'label'   => 'Ministerie van Buitenlandse Zaken', 
+          'term'    => 'overheid:Ministerie_van_Buitenlandse_Zaken', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Buitenlandse_Zaken'
+         ),
+      '4' => array( 
+          'label'   => 'Ministerie van Defensie', 
+          'term'    => 'overheid:Ministerie_van_Defensie', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Defensie'
+         ),
+      '5' => array( 
+          'label'   => 'Ministerie van Economische Zaken', 
+          'term'    => 'overheid:Ministerie_van_Economische_Zaken', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Economische_Zaken'
+         ),
+      '6' => array( 
+          'label'   => 'Ministerie van Economische Zaken, Landbouw en Innovatie', 
+          'term'    => 'overheid:Ministerie_van_Economische_Zaken_Landbouw_en_Innovatie', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Economische_Zaken_Landbouw_en_Innovatie'
+         ),
+      '7' => array( 
+          'label'   => 'Ministerie van Financiën', 
+          'term'    => 'overheid:Ministerie_van_Financien', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Financien'
+         ),
+      '8' => array( 
+          'label'   => 'Ministerie van Infrastructuur en Milieu', 
+          'term'    => 'overheid:Ministerie_van_Infrastructuur_en_Milieu', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Infrastructuur_en_Milieu'
+         ),
+      '9' => array( 
+          'label'   => 'Ministerie van Justitie', 
+          'term'    => 'overheid:Ministerie_van_Justitie', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Justitie'
+         ),
+      '10' => array( 
+          'label'   => 'Ministerie van Landbouw, Natuur en Voedselkwaliteit', 
+          'term'    => 'overheid:Ministerie_van_Landbouw,_Natuur_en_Voedselkwaliteit', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Landbouw,_Natuur_en_Voedselkwaliteit'
+         ),
+      '11' => array( 
+          'label'   => 'Ministerie van Onderwijs, Cultuur en Wetenschap', 
+          'term'    => 'overheid:Ministerie_van_Onderwijs,_Cultuur_en_Wetenschap', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Onderwijs,_Cultuur_en_Wetenschap'
+         ),
+      '12' => array( 
+          'label'   => 'Ministerie van Sociale Zaken en Werkgelegenheid', 
+          'term'    => 'overheid:Ministerie_van_Sociale_Zaken_en_Werkgelegenheid', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Sociale_Zaken_en_Werkgelegenheid'
+         ),
+      '13' => array( 
+          'label'   => 'Ministerie van Veiligheid en Justitie', 
+          'term'    => 'overheid:Ministerie_van_Veiligheid_en_Justitie', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Veiligheid_en_Justitie'
+         ),
+      '14' => array( 
+          'label'   => 'Ministerie van Verkeer en Waterstaat', 
+          'term'    => 'overheid:Ministerie_van_Verkeer_en_Waterstaat', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Verkeer_en_Waterstaat'
+         ),
+      '15' => array( 
+          'label'   => 'Ministerie van Volksgezondheid, Welzijn en Sport', 
+          'term'    => 'overheid:Ministerie_van_Volksgezondheid,_Welzijn_en_Sport', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Volksgezondheid,_Welzijn_en_Sport'
+         ),
+      '16' => array( 
+          'label'   => 'Ministerie van Volkshuisvesting, Ruimtelijke Ordening en Milieubeheer', 
+          'term'    => 'overheid:Ministerie_van_Volkshuisvesting,_Ruimtelijke_Ordening_en_Milieubeheer', 
+          'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Volkshuisvesting,_Ruimtelijke_Ordening_en_Milieubeheer'
+         )
+      );    
+          
+
+
     /**
      * Init
      */
@@ -57,7 +171,9 @@ class OWMSvelden {
         $this->define_constants();
         $this->includes();
         $this->setup_actions();
-        $this->setup_filters();
+        if ( DO_OWMS_DO_DEBUG ) {
+          $this->setup_debug_filters();
+        }
         $this->append_comboboxes();
 
 
@@ -81,6 +197,13 @@ class OWMSvelden {
       define( 'DO_OWMS_DO_DEBUG',   false );
       define( 'DO_OWMS_USE_CMB2',   true ); 
 
+      if ( ! defined( 'RHSWP_CT_DOSSIER' ) ) {
+        define( 'RHSWP_CT_DOSSIER', 'dossiers' );       // taxonomy used in theme 'wp-rijkshuisstijl'
+      }
+
+            
+
+      
     }
 
 
@@ -94,6 +217,50 @@ class OWMSvelden {
         );
 
     }
+
+    /**
+     * Check page type
+     */
+    private function check_page_type() {
+
+        global $wp_query;
+        $loop = 'notfound';
+    
+        if ( $this->is_posts_page() ) {
+            $loop = 'blog';
+        } elseif ( $wp_query->is_page ) {
+            $loop = is_front_page() ? 'front' : 'page';
+        } elseif ( $wp_query->is_home ) {
+            $loop = 'home';
+        } elseif ( $wp_query->is_single ) {
+            $loop = ( $wp_query->is_attachment ) ? 'attachment' : 'single';
+        } elseif ( $wp_query->is_category ) {
+            $loop = 'category';
+        } elseif ( $wp_query->is_tag ) {
+            $loop = 'tag';
+        } elseif ( $wp_query->is_tax ) {
+            $loop = 'tax';
+        } elseif ( $wp_query->is_archive ) {
+            if ( $wp_query->is_day ) {
+                $loop = 'day';
+            } elseif ( $wp_query->is_month ) {
+                $loop = 'month';
+            } elseif ( $wp_query->is_year ) {
+                $loop = 'year';
+            } elseif ( $wp_query->is_author ) {
+                $loop = 'author';
+            } else {
+                $loop = 'archive';
+            }
+        } elseif ( $wp_query->is_search ) {
+            $loop = 'search';
+        } elseif ( $wp_query->is_404 ) {
+            $loop = 'notfound';
+        }
+    
+        return $loop;
+    }
+
 
 
     /**
@@ -148,13 +315,55 @@ class OWMSvelden {
     /**
      * filter for when the CPT is previewed
      */
-    public function content_filter_for_preview($content = '') {
+    public function owms_debug_info($content = '') {
 
       global $post;
+
+
+      $output = $this->get_header_data( $post->ID );
+      $output = str_replace( '>', "&gt;", $output );
+      $output = str_replace( '<', "&lt;", $output );
+
+
+      if ( DO_OWMS_DO_DEBUG && WP_DEBUG ) {
+        return '<pre>' . $output . '</pre>' . $content;
+      }
+      else {
+        return $content; 
+      }
       
       
-      // lets go
-      return $content; // . ' / ' . $this->rhswp_append_data_to_header( $post->ID );
+    }
+
+
+  	public function is_posts_page() {
+  		return ( is_home() && 'page' == get_option( 'show_on_front' ) );
+  	}
+
+
+    /**
+     * filter for when the CPT is previewed
+     */
+    public function owms_debug_info_title(  $title, $id = null ) {
+
+      global $post;
+
+      
+      $output = $this->get_header_data( $post->ID );
+      $output = str_replace( '>', "&gt;", $output );
+      $output = str_replace( '<', "&lt;", $output );
+
+
+      if ( DO_OWMS_DO_DEBUG && WP_DEBUG ) {
+    
+        $currenturl = get_page_uri( $post->ID  );
+        $postpage   = get_permalink( get_option( 'page_for_posts' ) );
+
+        echo '<pre style="border: 1px solid red; white-space: pre-wrap; font-size: 90%; ">' . $output . '</pre>';
+        
+
+      }
+      
       
     }
 
@@ -183,7 +392,7 @@ class OWMSvelden {
 
       add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
       
-      add_action( 'wp_head', array( $this, 'rhswp_append_data_to_header' ), 4 );
+      add_action( 'wp_head', array( $this, 'write_header_data' ), 4 );
 
     }
 
@@ -192,15 +401,71 @@ class OWMSvelden {
     /**
      * Hook owmsvelden into WordPress
      */
-    private function setup_filters() {
+    private function setup_debug_filters() {
 
       	// content filter
-        add_filter( 'the_content', array( $this, 'content_filter_for_preview' ) );
+      	
+
+        global $wp_query;
+        $loop = 'notfound';
+
+      	if ( $wp_query->is_single ) {
+        	
+          add_filter( 'the_content', array( $this, 'owms_debug_info' ) );
+          
+      	}
+      	else {
+
+          // Find Genesis Theme Data
+          $checkgenesis = wp_get_theme( 'genesis' );
+          
+          if ( $checkgenesis ) {
+            // genesis is available.
+  
+            $theme_info = wp_get_theme();
+            
+            $genesis_flavors = array(
+              'genesis',
+              'genesis-trunk',
+            );
+            
+            if ( in_array( $theme_info->Template, $genesis_flavors ) ) {
+  
+              //* Add some debug info to the genesis_before action.
+              add_action( 'genesis_before', array( $this, 'owms_debug_info_title' ), 10, 2 );            
+  
+            }
+            else {
+              // genesis exists, but is not activated
+              add_filter( 'the_content', array( $this, 'owms_debug_info' ) );
+              
+            }
+          }
+          else {
+            // genesis does not exist in this environment
+            add_filter( 'the_content', array( $this, 'owms_debug_info' ) );
+
+          }
+  
+      	}
+
 
 
     }
 
 
+
+
+    /**
+     * Write out the header data
+     */
+    public function write_header_data() {
+
+      global $post;
+
+      echo $this->get_header_data( $post->ID );
+
+    }
 
 
     /**
@@ -238,7 +503,6 @@ class OWMSvelden {
 
         // plugin dependencies
         wp_enqueue_script( 'jquery-ui-core', array( 'jquery' ) );
-//        wp_enqueue_script( 'jquery-ui-sortable', array( 'jquery', 'jquery-ui-core' ) );
 
         wp_dequeue_script( 'link' ); // WP Posts Filter Fix (Advanced Settings not toggling)
         wp_dequeue_script( 'ai1ec_requirejs' ); // All In One Events Calendar Fix (Advanced Settings not toggling)
@@ -253,9 +517,10 @@ class OWMSvelden {
     /**
      * Output the HTML
      */
-    public function rhswp_append_data_to_header($postid) {
+    public function get_header_data( $postid ) {
       
       global $post;
+      global $wp_query;
       
       if ( $postid ) {
         $postid = $postid;
@@ -263,36 +528,150 @@ class OWMSvelden {
       else {
         $postid = $post->ID;
       }
+
+      if ( $this->is_posts_page() ) {
+        $postid = get_option( 'page_for_posts' );
+      }
+
+
+      $returnstring         = '';      
+      $owms_title           = '';
+      $owms_type            = 'webpagina';
+      $owms_identifier       = get_permalink( $postid );
+      $owms_language        = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'language', '' );
+      $owms_rights          = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'rights', '' );
+      $currentposttype      = get_post_type( $postid );
+
+      $owms_authority       = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'authority', '' );
+      $owms_creator         = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'creator', '' );
+      $owms_spatial         = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'spatial', '' );
+      
+      
+      $owms_date_modified   = get_the_modified_time( 'Y-m-d\TH:i:s' );
+      $owms_date_published  = get_the_date( get_option( 'date_format' ), $postid );
       
 
-      $owms_language  = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'language', '' );
+      if ( $currentposttype === 'post' ) {
+        $owms_type      = 'nieuwsbericht';
+      }
+      
+      $pagetype  = $this->check_page_type( $postid );
+
+      if ( $pagetype && DO_OWMS_DO_DEBUG && WP_DEBUG ) {
+        $returnstring .= '<meta name="OWMS-plugin" type="debug-info-pagetype" content="' . $pagetype . " (posttype: " . $currentposttype . ")\"/>\n";      
+      } 
+      
+
+      switch ($pagetype) {
+
+
+        case 'blog':
+
+          $owms_title   = get_the_title( $postid );
+          $owms_type    = 'overzichtspagina';
+
+          break;
+
+        case 'tax':
+
+          $term = is_tax() ? get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ) : $wp_query->get_queried_object();
+
+          if ( $term->name ) {
+            $owms_title  = get_the_title( $term->name );
+          }
+          else {
+            $owms_title  = __( 'Onbekende taxonomie', "owmsvelden-translate" );
+          }
+
+          $owms_type = 'overzichtspagina';
+
+          break;
+
+        default:
+
+          $owms_title  = get_the_title( $postid );
+
+          break;
+
+      }      
+
+// OWMS-Kern bestaat uit
+  
+//-  dcterms:identifier (Verwijzing)
+//-  dcterms:title (Titel)
+//-  dcterms:type (Informatietype)
+//-  dcterms:language (Taal)
+//-  overheid:authority (Eindverantwoordelijke)
+//-  dcterms:creator (Maker)
+//-  dcterms:modified (Wijzigingsdatum)
+//-  dcterms:temporal (Dekking in tijd) (NVT)
+//-  dcterms:spatial (Locatie)
+        
+      
+      if ( $owms_identifier ) {
+        $returnstring .= '<meta name="DCTERMS.identifier" title="XSD.anyURI" content="' . $owms_identifier . "\"/>\n";      
+      } 
+
+      if ( $owms_title ) {
+        $returnstring .= '<meta name="DCTERMS.title" content="' . $owms_title . "\"/>\n";      
+      } 
+
+      if ( $owms_type ) {
+        $returnstring .= '<meta name="DCTERMS.type" title="RIJKSOVERHEID.Informatietype" content="' . $owms_type . "\"/>\n";      
+      } 
 
       if ( $owms_language ) {
-        echo '<meta name="DCTERMS.language" title="XSD.language" content="' . $owms_language . "\"/>\n";      
+        $returnstring .= '<meta name="DCTERMS.language" title="XSD.language" content="' . $owms_language . "\"/>\n";      
       } 
 
-      $owms_rights  = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'rights', '' );
+      if ( $owms_authority ) {
 
-      if ( $owms_rights ) {
-        echo '<meta name="DCTERMS.rights" content="' . $owms_rights . "\"/>\n";      
+// <meta name="OVERHEID.authority" title="RIJKSOVERHEID.Organisatie" content="Ministerie van Algemene Zaken"/>-->        
+
+        $returnstring .= '<meta name="OVERHEID.authority" title="' . $this->ministeries[$owms_authority]['label'] . '" content="' . $this->ministeries[$owms_authority]['label'] . "\"/>\n";      
+
+        if ( $owms_rights ) {
+          $returnstring .= '<meta name="DCTERMS.rightsHolder" title="RIJKSOVERHEID.Organisatie" content="' . $owms_authority . "\"/>\n";      
+          $returnstring .= '<meta name="DCTERMS.rights" content="' . $owms_rights . "\"/>\n";      
+        } 
       } 
 
 
-      $owms_permalink  = get_permalink( $postid );
+      if ( $owms_creator ) {
+        $returnstring .= '<meta name="DCTERMS.creator" title="' . $this->ministeries[$owms_creator]['label'] . "\"/>\n";      
+      } 
 
-      if ( $owms_permalink ) {
-        echo '<meta name="DCTERMS.identifier" title="XSD.anyURI" content="' . $owms_permalink . "\"/>\n";      
+      if ( $owms_date_modified ) {
+        $returnstring .= '<meta name="DCTERMS.modified" title="XSD.dateTime" content="' . $owms_date_modified . "\"/>\n";    
+      } 
+
+      if ( $owms_spatial ) {
+        $returnstring .= '<meta name="DCTERMS.spatial" title="OVERHEID.Koninkrijksdeel" content="' . $this->spatial[$owms_spatial]['label'] . "\"/>\n";    
       } 
 
 
 
+      // assume RHSWP_CT_DOSSIER to be a valid value for DCTERMS.subject
+      // this taxonomy is active in theme 'wp-rijkshuisstijl'
+      if ( taxonomy_exists( RHSWP_CT_DOSSIER ) ) {
+        $terms = get_the_terms( $postid , RHSWP_CT_DOSSIER );
+        if ( $terms && ! is_wp_error( $terms ) ) { 
+          foreach($terms as $term) {
+            $returnstring .= '<meta name="DCTERMS.subject" content="' . $term->name . "\"/>\n"; 
+          }
+        }
+      }
+      elseif ( taxonomy_exists( 'category' ) ) {
+        $terms = get_the_terms( $postid , 'category' );
+        if ( $terms && ! is_wp_error( $terms ) ) { 
+          foreach($terms as $term) {
+            $returnstring .= '<meta name="DCTERMS.subject" content="' . $term->name . "\"/>\n"; 
+          }
+        }
+      }
 
+      return $returnstring;
 
-return;
-    
-
-
-        return $returnstring;
     }
 
     //========================================================================================================
@@ -377,11 +756,61 @@ return;
         'desc'             => __( '(auteursrechtelijke licentie)', "owmsvelden-translate" ),
         'id'            => DO_OWMS_FIELD . 'rights',
         'type'             => 'select',
-        'show_option_none' => true,
+        'show_option_none' => false,
         'options'          => array(
+          ''   => __( 'Niet van toepassing', "owmsvelden-translate" ),
           'CC0 1.0 Universal'   => __( 'CC0 1.0 Universal', "owmsvelden-translate" ),
         ),
         ) );
+
+        $activeministeries = array( 
+            '' => __( 'Niet van toepassing', "owmsvelden-translate" ),
+            '1' => 'Ministerie van Algemene Zaken',
+            '5' => 'Ministerie van Economische Zaken'
+          );
+      
+        $spatialused = array(    
+          '1' => 'Nederland',
+          '2' => 'Nederlandse Antillen',
+          '3' => 'Sint Maarten',
+          '4' => 'Aruba',
+          '5' => 'Curaçao', 
+        );
+
+        $cmb2_metafields->add_field( array(
+        'name'             => __( 'authority', "owmsvelden-translate" ),
+        'desc'             => __( 'authority', "owmsvelden-translate" ),
+        'id'            => DO_OWMS_FIELD . 'authority',
+        'type'             => 'select',
+        'show_option_none' => false,
+        'options'          => $activeministeries,
+        ) );
+
+        $cmb2_metafields->add_field( array(
+        'name'             => __( 'creator', "owmsvelden-translate" ),
+        'desc'             => __( 'creator', "owmsvelden-translate" ),
+        'id'            => DO_OWMS_FIELD . 'creator',
+        'type'             => 'select',
+        'show_option_none' => false,
+        'options'          => $activeministeries,
+        ) );
+
+        $cmb2_metafields->add_field( array(
+        'name'             => __( 'spatial', "owmsvelden-translate" ),
+        'desc'             => __( 'spatial', "owmsvelden-translate" ),
+        'id'            => DO_OWMS_FIELD . 'spatial',
+        'type'             => 'select',
+        'show_option_none' => false,
+        'options'          => $spatialused,
+        ) );
+
+
+
+
+
+
+//      $owms_creator         = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'creator', '' );
+//      $owms_spatial         = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'spatial', '' );
 
 
         require_once dirname( __FILE__ ) . '/inc/cmb2-check-required-fields.php';
