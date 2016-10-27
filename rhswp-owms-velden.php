@@ -2,13 +2,14 @@
 /*
  * owmsvelden. 
  *
- * Plugin Name: ICTU / WP - OWMS-velden
- * Plugin URI:  https://wbvb.nl/plugins/rhswp-owms-velden/
- * Description: De mogelijkheid om OWMS velden toe te voegen aan content
- * Version:     0.0.1
- * Author:      Paul van Buuren
- * Author URI:  https://wbvb.nl
- * License:     GPL-2.0+
+ * Plugin Name:   ICTU / WP - OWMS-velden
+ * Plugin URI:    https://wbvb.nl/plugins/rhswp-owms-velden/
+ * Description:   De mogelijkheid om OWMS velden toe te voegen aan content
+ * Version:       0.0.2
+ * Version desc:  Rightsholder aangepast
+ * Author:        Paul van Buuren
+ * Author URI:    https://wbvb.nl
+ * License:       GPL-2.0+
  *
  * Text Domain: owmsvelden-translate
  * Domain Path: /languages
@@ -37,6 +38,60 @@ class OWMSvelden {
      * @var owmsvelden
      */
     public $owmsvelden = null;
+          
+
+
+    /**
+     * Init
+     */
+    public static function init() {
+
+        $DO_OWMS_this = new self();
+
+    }
+
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+
+        $this->define_constants();
+        $this->includes();
+        $this->setup_actions();
+        if ( DO_OWMS_DO_DEBUG ) {
+          $this->setup_debug_filters();
+        }
+        $this->append_comboboxes();
+
+
+    }
+
+
+    /**
+     * Define owmsvelden constants
+     */
+    private function define_constants() {
+
+      $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://';
+
+      define( 'DO_OWMS_VERSION',    $this->version );
+      define( 'DO_OWMS_FOLDER',     'rhswp-owms-velden' );
+      define( 'DO_OWMS_BASE_URL',   trailingslashit( plugins_url( DO_OWMS_FOLDER ) ) );
+      define( 'DO_OWMS_ASSETS_URL', trailingslashit( DO_OWMS_BASE_URL . 'assets' ) );
+      define( 'DO_OWMS_MEDIAELEMENT_URL', trailingslashit( DO_OWMS_BASE_URL . 'mediaelement' ) );
+      define( 'DO_OWMS_PATH',       plugin_dir_path( __FILE__ ) );
+      define( 'DO_OWMS_FIELD',      'owmsvelden_pf_' ); // prefix for owmsvelden metadata fields
+      define( 'DO_OWMS_DO_DEBUG',   true );
+      define( 'DO_OWMS_USE_CMB2',   true ); 
+
+      if ( ! defined( 'RHSWP_CT_DOSSIER' ) ) {
+        define( 'RHSWP_CT_DOSSIER', 'dossiers' );       // taxonomy used in theme 'wp-rijkshuisstijl'
+      }
+
+      
+    }
+
 
 
     public $spatial = array(    
@@ -150,61 +205,7 @@ class OWMSvelden {
           'uri'     => 'http://standaarden.overheid.nl/owms/terms/Ministerie_van_Volkshuisvesting,_Ruimtelijke_Ordening_en_Milieubeheer'
          )
       );    
-          
 
-
-    /**
-     * Init
-     */
-    public static function init() {
-
-        $DO_OWMS_this = new self();
-
-    }
-
-
-    /**
-     * Constructor
-     */
-    public function __construct() {
-
-        $this->define_constants();
-        $this->includes();
-        $this->setup_actions();
-        if ( DO_OWMS_DO_DEBUG ) {
-          $this->setup_debug_filters();
-        }
-        $this->append_comboboxes();
-
-
-    }
-
-
-    /**
-     * Define owmsvelden constants
-     */
-    private function define_constants() {
-
-      $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://';
-
-      define( 'DO_OWMS_VERSION',    $this->version );
-      define( 'DO_OWMS_FOLDER',     'rhswp-owms-velden' );
-      define( 'DO_OWMS_BASE_URL',   trailingslashit( plugins_url( DO_OWMS_FOLDER ) ) );
-      define( 'DO_OWMS_ASSETS_URL', trailingslashit( DO_OWMS_BASE_URL . 'assets' ) );
-      define( 'DO_OWMS_MEDIAELEMENT_URL', trailingslashit( DO_OWMS_BASE_URL . 'mediaelement' ) );
-      define( 'DO_OWMS_PATH',       plugin_dir_path( __FILE__ ) );
-      define( 'DO_OWMS_FIELD',      'owmsvelden_pf_' ); // prefix for owmsvelden metadata fields
-      define( 'DO_OWMS_DO_DEBUG',   false );
-      define( 'DO_OWMS_USE_CMB2',   true ); 
-
-      if ( ! defined( 'RHSWP_CT_DOSSIER' ) ) {
-        define( 'RHSWP_CT_DOSSIER', 'dossiers' );       // taxonomy used in theme 'wp-rijkshuisstijl'
-      }
-
-            
-
-      
-    }
 
 
     /**
@@ -359,7 +360,7 @@ class OWMSvelden {
         $currenturl = get_page_uri( $post->ID  );
         $postpage   = get_permalink( get_option( 'page_for_posts' ) );
 
-        echo '<pre style="border: 1px solid red; white-space: pre-wrap; font-size: 90%; ">' . $output . '</pre>';
+        echo '<div style="border: 1px solid black; white-space: pre-wrap; font-size: 80%; padding: 1em; margin: 1em;"><p>OWMS debug info:</p><pre>' . $output . '</pre></div>';
         
 
       }
@@ -631,7 +632,7 @@ class OWMSvelden {
         $returnstring .= '<meta name="OVERHEID.authority" title="' . $this->ministeries[$owms_authority]['label'] . '" content="' . $this->ministeries[$owms_authority]['label'] . "\"/>\n";      
 
         if ( $owms_rights ) {
-          $returnstring .= '<meta name="DCTERMS.rightsHolder" title="RIJKSOVERHEID.Organisatie" content="' . $owms_authority . "\"/>\n";      
+          $returnstring .= '<meta name="DCTERMS.rightsHolder" title="RIJKSOVERHEID.Organisatie" content="' . $this->ministeries[$owms_authority]['label'] . "\"/>\n";      
           $returnstring .= '<meta name="DCTERMS.rights" content="' . $owms_rights . "\"/>\n";      
         } 
       } 
@@ -699,7 +700,6 @@ class OWMSvelden {
     
     public function append_comboboxes() {
 
-       //  echo '<h1 style="border: 1px solid black; z-index: 9999; position: absolute; bottom: 10px; right: 10px; background: white; padding: 10px;">append_comboboxes</h1>';
     
     if ( DO_OWMS_USE_CMB2 ) {
       
@@ -709,7 +709,7 @@ class OWMSvelden {
         // cmb2 NOT loaded
       }
       else {
-       //  echo '<h1 style="border: 1px solid black; z-index: 9999; position: absolute; bottom: 40px; right: 10px; background: white; padding: 10px;">Gebruik die velden!</h1>';
+        // okidokie!
       }
     
       add_action( 'cmb2_admin_init', 'rhswp_register_metabox_owmsvelden' );
@@ -718,9 +718,6 @@ class OWMSvelden {
        * Hook in and add a demo metabox. Can only happen on the 'cmb2_admin_init' or 'cmb2_init' hook.
        */
       function rhswp_register_metabox_owmsvelden() {
-
-       //  echo '<h1 style="border: 1px solid black; z-index: 9999; position: absolute; bottom: 90px; right: 10px; background: white; padding: 10px;">rhswp_register_metabox_owmsvelden</h1>';
-
 
       	/**
       	 * Metabox with fields for the video
