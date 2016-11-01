@@ -5,8 +5,8 @@
  * Plugin Name:   ICTU / WP - OWMS-velden
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-owms-velden/
  * Description:   De mogelijkheid om OWMS velden toe te voegen aan content
- * Version:       0.0.2
- * Version desc:  Rightsholder aangepast
+ * Version:       0.0.3
+ * Version desc:  AZ verwijderd, BiZa geactiveerd
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -82,7 +82,7 @@ class OWMSvelden {
       define( 'DO_OWMS_MEDIAELEMENT_URL', trailingslashit( DO_OWMS_BASE_URL . 'mediaelement' ) );
       define( 'DO_OWMS_PATH',       plugin_dir_path( __FILE__ ) );
       define( 'DO_OWMS_FIELD',      'owmsvelden_pf_' ); // prefix for owmsvelden metadata fields
-      define( 'DO_OWMS_DO_DEBUG',   true );
+      define( 'DO_OWMS_DO_DEBUG',   false );
       define( 'DO_OWMS_USE_CMB2',   true ); 
 
       if ( ! defined( 'RHSWP_CT_DOSSIER' ) ) {
@@ -762,10 +762,10 @@ class OWMSvelden {
 
         $activeministeries = array( 
             '' => __( 'Niet van toepassing', "owmsvelden-translate" ),
-            '1' => 'Ministerie van Algemene Zaken',
+            '2' => 'Ministerie van Binnenlandse Zaken en Koninkrijksrelaties',
             '5' => 'Ministerie van Economische Zaken'
           );
-      
+
         $spatialused = array(    
           '1' => 'Nederland',
           '2' => 'Nederlandse Antillen',
