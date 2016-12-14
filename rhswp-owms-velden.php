@@ -5,8 +5,8 @@
  * Plugin Name:   ICTU / WP - OWMS-velden
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-owms-velden/
  * Description:   De mogelijkheid om OWMS velden toe te voegen aan content
- * Version:       0.0.3
- * Version desc:  AZ verwijderd, BiZa geactiveerd
+ * Version:       0.0.4
+ * Version desc:  bug removed for 404 pages
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -463,8 +463,10 @@ class OWMSvelden {
     public function write_header_data() {
 
       global $post;
-
-      echo $this->get_header_data( $post->ID );
+      
+      if ( is_object( $post ) ) {
+        echo $this->get_header_data( $post->ID );
+      }
 
     }
 
