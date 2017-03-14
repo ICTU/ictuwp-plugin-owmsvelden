@@ -5,8 +5,8 @@
  * Plugin Name:   ICTU / WP - OWMS-velden
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-owms-velden/
  * Description:   De mogelijkheid om OWMS velden toe te voegen aan content
- * Version:       0.0.4
- * Version desc:  bug removed for 404 pages
+ * Version:       0.0.5
+ * Version desc:  Taalcode voor niet-standaard pagina's
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -395,6 +395,12 @@ class OWMSvelden {
       
       add_action( 'wp_head', array( $this, 'write_header_data' ), 4 );
 
+//      add_action( 'wp_head', array( $this, 'owms_add_lang_metatag' ), 5 );
+
+      add_action( 'language_attributes', array( $this, 'owms_change_html_lang_attr' ) );
+
+      add_action( 'wpseo_locale', array( $this, 'owms_get_lang_code' ) );
+
     }
 
 
@@ -641,7 +647,7 @@ class OWMSvelden {
 
 
       if ( $owms_creator ) {
-        $returnstring .= '<meta name="DCTERMS.creator" title="' . $this->ministeries[$owms_creator]['label'] . "\"/>\n";      
+        $returnstring .= '<meta name="DCTERMS.creator" title="RIJKSOVERHEID.Organisatie" content="' . $this->ministeries[$owms_creator]['label'] . "\"/>\n";      
       } 
 
       if ( $owms_date_modified ) {
@@ -702,131 +708,114 @@ class OWMSvelden {
     
     public function append_comboboxes() {
 
-    
-    if ( DO_OWMS_USE_CMB2 ) {
+      if ( DO_OWMS_USE_CMB2 ) {
+        
+        if ( ! defined( 'CMB2_LOADED' ) ) {
+          die( ' CMB2_LOADED not loaded ' );
+          return false;
+          // cmb2 NOT loaded
+        }
+        else {
+          // okidokie!
+        }
       
-      if ( ! defined( 'CMB2_LOADED' ) ) {
-        die( ' CMB2_LOADED not loaded ' );
-        return false;
-        // cmb2 NOT loaded
-      }
-      else {
-        // okidokie!
-      }
-    
-      add_action( 'cmb2_admin_init', 'rhswp_register_metabox_owmsvelden' );
-    
-      /**
-       * Hook in and add a demo metabox. Can only happen on the 'cmb2_admin_init' or 'cmb2_init' hook.
-       */
-      function rhswp_register_metabox_owmsvelden() {
-
-      	/**
-      	 * Metabox with fields for the video
-      	 */
-      	$cmb2_metafields = new_cmb2_box( array(
-          'id'            => DO_OWMS_FIELD . 'metabox',
-          'title'         => __( 'OWMS velden', "owmsvelden-translate" ),
-          'object_types'  => array( 'page', 'post' ), // Post type
-      	) );
-    
-      	/**
-      	 * The fields
-      	 */
-
-
-        $cmb2_metafields->add_field( array(
-        'name'             => __( 'Taal van deze pagina', "owmsvelden-translate" ),
-        'desc'             => __( 'Taal van deze pagina', "owmsvelden-translate" ),
-        'id'            => DO_OWMS_FIELD . 'language',
-        'type'             => 'select',
-        'show_option_none' => false,
-        'options'          => array(
-          'nl-NL'   => __( 'Nederlands (nl-NL)', "owmsvelden-translate" ),
-          'en-GB'   => __( 'Engels (en-GB)', "owmsvelden-translate" ),
-          'en-US'   => __( 'Engels (n-US)', "owmsvelden-translate" ),
-          'pap-AW'  => __( 'Papiamento (pap-AW)', "owmsvelden-translate" ),
-          'pap-CW'  => __( 'Papiamentu (pap-CW)', "owmsvelden-translate" ),
-        ),
-        ) );
-
-        $cmb2_metafields->add_field( array(
-        'name'             => __( 'Gebruiksrechten voor de pagina', "owmsvelden-translate" ),
-        'desc'             => __( '(auteursrechtelijke licentie)', "owmsvelden-translate" ),
-        'id'            => DO_OWMS_FIELD . 'rights',
-        'type'             => 'select',
-        'show_option_none' => false,
-        'options'          => array(
-          ''   => __( 'Niet van toepassing', "owmsvelden-translate" ),
-          'CC0 1.0 Universal'   => __( 'CC0 1.0 Universal', "owmsvelden-translate" ),
-        ),
-        ) );
-
-        $activeministeries = array( 
-            '' => __( 'Niet van toepassing', "owmsvelden-translate" ),
-            '2' => 'Ministerie van Binnenlandse Zaken en Koninkrijksrelaties',
-            '5' => 'Ministerie van Economische Zaken'
+        add_action( 'cmb2_admin_init', 'rhswp_register_metabox_owmsvelden' );
+      
+        /**
+         * Hook in and add a demo metabox. Can only happen on the 'cmb2_admin_init' or 'cmb2_init' hook.
+         */
+        function rhswp_register_metabox_owmsvelden() {
+  
+        	/**
+        	 * Metabox with fields for the video
+        	 */
+        	$cmb2_metafields = new_cmb2_box( array(
+            'id'            => DO_OWMS_FIELD . 'metabox',
+            'title'         => __( 'OWMS velden', "owmsvelden-translate" ),
+            'object_types'  => array( 'page', 'post' ), // Post type
+        	) );
+      
+        	/**
+        	 * The fields
+        	 */
+  
+  
+          $cmb2_metafields->add_field( array(
+          'name'             => __( 'Taal van deze pagina', "owmsvelden-translate" ),
+          'desc'             => __( 'Taal van deze pagina', "owmsvelden-translate" ),
+          'id'            => DO_OWMS_FIELD . 'language',
+          'type'             => 'select',
+          'show_option_none' => false,
+          'options'          => array(
+            'nl-NL'   => __( 'Nederlands (nl-NL)', "owmsvelden-translate" ),
+            'en-GB'   => __( 'Engels (en-GB)', "owmsvelden-translate" ),
+            'en-US'   => __( 'Engels (n-US)', "owmsvelden-translate" ),
+            'pap-AW'  => __( 'Papiamento (pap-AW)', "owmsvelden-translate" ),
+            'pap-CW'  => __( 'Papiamentu (pap-CW)', "owmsvelden-translate" ),
+          ),
+          ) );
+  
+          $cmb2_metafields->add_field( array(
+          'name'             => __( 'Gebruiksrechten voor de pagina', "owmsvelden-translate" ),
+          'desc'             => __( '(auteursrechtelijke licentie)', "owmsvelden-translate" ),
+          'id'            => DO_OWMS_FIELD . 'rights',
+          'type'             => 'select',
+          'show_option_none' => false,
+          'options'          => array(
+            ''   => __( 'Niet van toepassing', "owmsvelden-translate" ),
+            'CC0 1.0 Universal'   => __( 'CC0 1.0 Universal', "owmsvelden-translate" ),
+          ),
+          ) );
+  
+          $activeministeries = array( 
+              '' => __( 'Niet van toepassing', "owmsvelden-translate" ),
+              '2' => 'Ministerie van Binnenlandse Zaken en Koninkrijksrelaties',
+              '5' => 'Ministerie van Economische Zaken'
+            );
+  
+          $spatialused = array(    
+            '1' => 'Nederland',
+            '2' => 'Nederlandse Antillen',
+            '3' => 'Sint Maarten',
+            '4' => 'Aruba',
+            '5' => 'Curaçao', 
           );
+  
+          $cmb2_metafields->add_field( array(
+          'name'             => __( 'authority', "owmsvelden-translate" ),
+          'desc'             => __( 'authority', "owmsvelden-translate" ),
+          'id'            => DO_OWMS_FIELD . 'authority',
+          'type'             => 'select',
+          'show_option_none' => false,
+          'options'          => $activeministeries,
+          ) );
+  
+          $cmb2_metafields->add_field( array(
+          'name'             => __( 'creator', "owmsvelden-translate" ),
+          'desc'             => __( 'creator', "owmsvelden-translate" ),
+          'id'            => DO_OWMS_FIELD . 'creator',
+          'type'             => 'select',
+          'show_option_none' => false,
+          'options'          => $activeministeries,
+          ) );
+  
+          $cmb2_metafields->add_field( array(
+          'name'             => __( 'spatial', "owmsvelden-translate" ),
+          'desc'             => __( 'spatial', "owmsvelden-translate" ),
+          'id'            => DO_OWMS_FIELD . 'spatial',
+          'type'             => 'select',
+          'show_option_none' => false,
+          'options'          => $spatialused,
+          ) );
+  
+          require_once dirname( __FILE__ ) . '/inc/cmb2-check-required-fields.php';
+  
+        }
+      }  // DO_OWMS_USE_CMB2
+    }    
 
-        $spatialused = array(    
-          '1' => 'Nederland',
-          '2' => 'Nederlandse Antillen',
-          '3' => 'Sint Maarten',
-          '4' => 'Aruba',
-          '5' => 'Curaçao', 
-        );
-
-        $cmb2_metafields->add_field( array(
-        'name'             => __( 'authority', "owmsvelden-translate" ),
-        'desc'             => __( 'authority', "owmsvelden-translate" ),
-        'id'            => DO_OWMS_FIELD . 'authority',
-        'type'             => 'select',
-        'show_option_none' => false,
-        'options'          => $activeministeries,
-        ) );
-
-        $cmb2_metafields->add_field( array(
-        'name'             => __( 'creator', "owmsvelden-translate" ),
-        'desc'             => __( 'creator', "owmsvelden-translate" ),
-        'id'            => DO_OWMS_FIELD . 'creator',
-        'type'             => 'select',
-        'show_option_none' => false,
-        'options'          => $activeministeries,
-        ) );
-
-        $cmb2_metafields->add_field( array(
-        'name'             => __( 'spatial', "owmsvelden-translate" ),
-        'desc'             => __( 'spatial', "owmsvelden-translate" ),
-        'id'            => DO_OWMS_FIELD . 'spatial',
-        'type'             => 'select',
-        'show_option_none' => false,
-        'options'          => $spatialused,
-        ) );
-
-
-
-
-
-
-//      $owms_creator         = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'creator', '' );
-//      $owms_spatial         = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'spatial', '' );
-
-
-        require_once dirname( __FILE__ ) . '/inc/cmb2-check-required-fields.php';
-
-
-
-      }
-    
-    
-    }  // DO_OWMS_USE_CMB2
-    
-}    
 
     //========================================================================================================
-    
-
-
 
     /**
      * Check our WordPress installation is compatible with owmsvelden
@@ -837,12 +826,56 @@ class OWMSvelden {
         $systemCheck->check();
 
     }
+  
 
+    //========================================================================================================
+    function owms_add_lang_metatag (){
+  
+      global $post;
+      $postid = get_the_ID();
+  
+      if ( $postid ) {
+        $postid = $postid;
+      }
+      else {
+        $postid = $post->ID;
+      }
+      if ( $postid ) {
+        $owms_language        = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'language', '' );
+        if ( $owms_language ) {
+          echo "<meta http-equiv=\"content-language\" content=\"" . $owms_language . "\">";
+        }
+      }
+    }
+  
 
+    //========================================================================================================
+    function owms_change_html_lang_attr() {
+      return "lang=\"" . $this->owms_get_lang_code() . "\"";
+    }
+  
 
+    //========================================================================================================
+    function owms_get_lang_code() {
+      $owms_language = 'nl-NL'; // default language
+  
+      global $post;
+      $postid = get_the_ID();
+  
+      if ( ( !$postid ) && ( is_object( $post ) ) ){
+        $postid = $post->ID;
+      }
 
-
-
+      if ( $postid ) {
+        $owms_language        = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'language', '' );
+        if ( $owms_language ) {
+          return $owms_language;
+        }
+      }
+      return $owms_language;
+      
+    }
+  
 
 
 
