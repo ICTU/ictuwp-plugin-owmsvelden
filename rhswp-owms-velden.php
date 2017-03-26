@@ -3,7 +3,7 @@
  * owmsvelden. 
  *
  * Plugin Name:   ICTU / WP - OWMS-velden
- * Plugin URI:    https://wbvb.nl/plugins/rhswp-owms-velden/
+ * Plugin URI:    https://github.com/ICTU/digitale-overheid-wordpress-plugin-owms-velden/
  * Description:   De mogelijkheid om OWMS velden toe te voegen aan content
  * Version:       0.0.5
  * Version desc:  Taalcode voor niet-standaard pagina's
@@ -395,9 +395,7 @@ class OWMSvelden {
       
       add_action( 'wp_head', array( $this, 'write_header_data' ), 4 );
 
-//      add_action( 'wp_head', array( $this, 'owms_add_lang_metatag' ), 5 );
-
-      add_action( 'language_attributes', array( $this, 'owms_change_html_lang_attr' ) );
+      add_filter( 'genesis_attr_entry', array( $this, 'owms_set_article_language_attr' ) );
 
       add_action( 'wpseo_locale', array( $this, 'owms_get_lang_code' ) );
 
@@ -829,31 +827,25 @@ class OWMSvelden {
   
 
     //========================================================================================================
-    function owms_add_lang_metatag (){
-  
-      global $post;
-      $postid = get_the_ID();
-  
-      if ( $postid ) {
-        $postid = $postid;
-      }
-      else {
-        $postid = $post->ID;
-      }
-      if ( $postid ) {
-        $owms_language        = $this->get_stored_values( $postid, DO_OWMS_FIELD . 'language', '' );
-        if ( $owms_language ) {
-          echo "<meta http-equiv=\"content-language\" content=\"" . $owms_language . "\">";
-        }
-      }
-    }
-  
 
-    //========================================================================================================
-    function owms_change_html_lang_attr() {
-      return "lang=\"" . $this->owms_get_lang_code() . "\"";
+    function owms_set_article_language_attr( $attributes ) {
+    	if( is_singular( ) ) {
+    		// class, id, itemscope, itemtype, etc.
+        $owms_language    = $this->owms_get_lang_code();
+        $blog_language    = get_bloginfo( 'language' );
+        if ( 'nl' == $blog_language ) {
+          $blog_language = 'nl-NL';
+        }
+        if ( $owms_language != $blog_language ) {
+          // different language
+      		$attributes['lang']   = $owms_language;
+        }
+        else {
+          // do nothing
+        }
+    	}
+    	return $attributes;
     }
-  
 
     //========================================================================================================
     function owms_get_lang_code() {
