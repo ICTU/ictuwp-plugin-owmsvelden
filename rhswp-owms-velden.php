@@ -5,8 +5,8 @@
  * Plugin Name:   ICTU / WP - OWMS-velden
  * Plugin URI:    https://github.com/ICTU/digitale-overheid-wordpress-plugin-owms-velden/
  * Description:   De mogelijkheid om OWMS velden toe te voegen aan content
- * Version:       0.0.5
- * Version desc:  Taalcode voor niet-standaard pagina's
+ * Version:       0.0.6
+ * Version desc:  Title safe gemaakt met wp_strip_all_tags
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -613,7 +613,12 @@ class OWMSvelden {
 //-  dcterms:modified (Wijzigingsdatum)
 //-  dcterms:temporal (Dekking in tijd) (NVT)
 //-  dcterms:spatial (Locatie)
-        
+      
+      
+      $owms_identifier  = wp_strip_all_tags( $owms_identifier );  
+      $owms_title       = wp_strip_all_tags( $owms_title );  
+      $owms_type        = wp_strip_all_tags( $owms_type );  
+      $owms_language    = wp_strip_all_tags( $owms_language );  
       
       if ( $owms_identifier ) {
         $returnstring .= '<meta name="DCTERMS.identifier" title="XSD.anyURI" content="' . $owms_identifier . "\"/>\n";      
