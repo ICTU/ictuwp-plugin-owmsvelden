@@ -1,0 +1,14 @@
+{
+  "name": "ictu/ictuwp-plugin-owmsvelden",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0",
+  "description": "Een soort van extra manier om pagina's automagisch te laten classificeren. Waarschijnlijk overbodig anno 2020.",
+  "homepage": "https://www.digitaleoverheid.nl",
+  "authors": [
+    {
+      "name": "Paul van Buuren",
+      "email": "paul@wbvb.nl",
+      "homepage": "https://wbvb.nl"
+    }
+  ]
+}
