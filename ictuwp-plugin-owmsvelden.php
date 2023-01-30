@@ -5,7 +5,7 @@
  * Plugin Name:   ICTU / WP - OWMS-velden
  * Plugin URI:    https://github.com/ICTU/digitale-overheid-wordpress-plugin-owms-velden/
  * Description:   De mogelijkheid om OWMS velden toe te voegen aan content
- * Version:       0.0.7
+ * Version:       1.0.1
  * Version desc:  Title safe gemaakt met wp_strip_all_tags
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
@@ -31,7 +31,7 @@ if ( ! class_exists( 'OWMSvelden' ) ) :
 		/**
 		 * @var string
 		 */
-		public $version = '0.0.7';
+		public $version = '1.0.1';
 
 
 		/**
@@ -86,6 +86,9 @@ if ( ! class_exists( 'OWMSvelden' ) ) :
 
 			if ( ! defined( 'RHSWP_CT_DOSSIER' ) ) {
 				define( 'RHSWP_CT_DOSSIER', 'dossiers' );       // taxonomy used in theme 'wp-rijkshuisstijl'
+			}
+			if ( ! defined( 'RHSWP_CPT_DOCUMENT' ) ) {
+				define( 'RHSWP_CPT_DOCUMENT', 'document' );   // slug for custom taxonomy 'document'
 			}
 
 
@@ -614,8 +617,7 @@ if ( ! class_exists( 'OWMSvelden' ) ) :
 
 			if ( $owms_authority ) {
 
-// <meta name="OVERHEID.authority" title="RIJKSOVERHEID.Organisatie" content="Ministerie van Algemene Zaken"/>-->        
-
+				// <meta name="OVERHEID.authority" title="RIJKSOVERHEID.Organisatie" content="Ministerie van Algemene Zaken"/>-->
 				$returnstring .= '<meta name="OVERHEID.authority" title="' . $this->ministeries[ $owms_authority ]['label'] . '" content="' . $this->ministeries[ $owms_authority ]['label'] . "\"/>\n";
 
 				if ( $owms_rights ) {
@@ -707,7 +709,7 @@ if ( ! class_exists( 'OWMSvelden' ) ) :
 					$cmb2_metafields = new_cmb2_box( array(
 						'id'           => DO_OWMS_FIELD . 'metabox',
 						'title'        => __( 'OWMS velden', "owmsvelden-translate" ),
-						'object_types' => array( 'page', 'post' ), // Post type
+						'object_types' => array( 'page', 'post', RHSWP_CPT_DOCUMENT ), // Post type
 					) );
 
 					/**
