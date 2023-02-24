@@ -1,4 +1,4 @@
-#CHANGELOG.md
+# CHANGELOG.md
 
 ## Current version:
 * 1.0.1 - Make OWMS fields available to RHSWP_CPT_DOCUMENT ('document').
