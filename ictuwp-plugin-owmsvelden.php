@@ -5,8 +5,8 @@
  * Plugin Name:   ICTU / WP - OWMS-velden
  * Plugin URI:    https://github.com/ICTU/digitale-overheid-wordpress-plugin-owms-velden/
  * Description:   De mogelijkheid om OWMS velden toe te voegen aan content
- * Version:       1.0.1
- * Version desc:  Title safe gemaakt met wp_strip_all_tags
+ * Version:       1.1.1
+ * Version desc:  Use category slug as OWMS type for 'post'.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -31,7 +31,7 @@ if ( ! class_exists( 'OWMSvelden' ) ) :
 		/**
 		 * @var string
 		 */
-		public $version = '1.0.1';
+		public $version = '1.1.1';
 
 
 		/**
@@ -540,6 +540,20 @@ if ( ! class_exists( 'OWMSvelden' ) ) :
 
 			if ( $currentposttype === 'post' ) {
 				$owms_type = 'nieuwsbericht';
+
+				// Get the post's 'Primary' category, if this Yoast feature is available, & one is set
+				$wpseo_primary_term = get_post_meta( $postid, '_yoast_wpseo_primary_category' );
+				if ( $wpseo_primary_term ) {
+					$primary_term     = get_term( $wpseo_primary_term[0] );
+					$default_category = get_option( 'default_category' );
+					if ( $primary_term->term_id && ( intval( $default_category ) !== intval( $primary_term->term_id ) ) ) {
+						// Primary category is available and it is not equal to the default category, so
+						// set $owms_type to slug of the primary category for this post;
+						$owms_type = $primary_term->slug;
+					} else {
+						// stick with $owms_type = 'nieuwsbericht';
+					}
+				}
 			}
 
 			$pagetype = $this->check_page_type( $postid );
