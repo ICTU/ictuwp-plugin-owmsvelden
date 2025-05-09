@@ -5,8 +5,8 @@
  * Plugin Name:   ICTU / WP - OWMS-velden
  * Plugin URI:    https://github.com/ICTU/digitale-overheid-wordpress-plugin-owms-velden/
  * Description:   De mogelijkheid om OWMS velden toe te voegen aan content
- * Version:       1.1.1
- * Version desc:  Use category slug as OWMS type for 'post'.
+ * Version:       1.1.2
+ * Version desc:  New types for 'event' and 'community'.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -31,7 +31,7 @@ if ( ! class_exists( 'OWMSvelden' ) ) :
 		/**
 		 * @var string
 		 */
-		public $version = '1.1.1';
+		public $version = '1.1.2';
 
 
 		/**
@@ -554,6 +554,10 @@ if ( ! class_exists( 'OWMSvelden' ) ) :
 						// stick with $owms_type = 'nieuwsbericht';
 					}
 				}
+			} elseif ( $currentposttype === 'event' ) {
+				$owms_type = 'evenement';
+			} elseif ( $currentposttype === 'community' ) {
+				$owms_type = 'community';
 			}
 
 			$pagetype = $this->check_page_type( $postid );
