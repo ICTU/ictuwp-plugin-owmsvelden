@@ -21,3 +21,4 @@ distribute.sh
 
 get_cmb2_files.sh
 .idea/*
+.DS_Store
