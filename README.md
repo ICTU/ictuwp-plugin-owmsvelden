@@ -6,7 +6,7 @@ Mogelijkheid voor het invoeren van OWMS velden (DCTERMS)
 Paul van Buuren (paul@wbvb.nl)
 
 ## Current version
-* 1.1.2 - New types for 'event' and 'community'.
+* 1.1.3 - Removed duplicate, lowercase LICENSE file.
 
 ## To do
 [ ] - collect all translateable strings into .po / .pot files

@@ -1,6 +1,7 @@
 # CHANGELOG.md
 
 ## Version history
+* 1.1.3 - Removed duplicate, lowercase LICENSE file.
 * 1.1.2 - New types for 'event' and 'community'.
 * 1.1.1 - Use category slug as OWMS type for 'post'.
 * 1.0.1 - Make OWMS fields available to RHSWP_CPT_DOCUMENT ('document').
