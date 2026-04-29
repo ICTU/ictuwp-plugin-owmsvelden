@@ -2,7 +2,7 @@
 /*
  * owmsvelden. 
  *
- * Plugin Name:   ICTU / WP - OWMS-velden
+ * Plugin Name:   ICTU / WP / DO - OWMS-velden
  * Plugin URI:    https://github.com/ICTU/digitale-overheid-wordpress-plugin-owms-velden/
  * Description:   De mogelijkheid om OWMS velden toe te voegen aan content
  * Version:       1.1.3
